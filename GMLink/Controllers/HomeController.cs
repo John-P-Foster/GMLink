@@ -1,4 +1,5 @@
 ﻿/*This is a test*/
+/*This too is a test*/
 using GMLink.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
