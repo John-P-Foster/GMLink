@@ -13,7 +13,7 @@ namespace GMLink.Controllers
         {
             _logger = logger;
         }
-
+        //carl
         public IActionResult Index()
         {
             return View();
