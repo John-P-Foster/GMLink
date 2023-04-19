@@ -1,10 +1,6 @@
-﻿/*This is a test*/
-/*This too is a test*/
-//Matthieu Joseph
-using GMLink.Models;
+﻿using GMLink.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-//Cole Tittle
 namespace GMLink.Controllers
 {
     public class HomeController : Controller
