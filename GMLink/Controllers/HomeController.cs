@@ -17,11 +17,31 @@ namespace GMLink.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult FAQs()
         {
             return View();
         }
 
+        public IActionResult About()
+        {
+            return View();
+        }
+        public IActionResult News()
+        {
+            return View();
+        }
+        public IActionResult Policies ()
+        {
+            return View();
+        }
+        public IActionResult BrowseReservations ()
+        {
+            return View("Views/Reservations/BrowseReservations.cshtml");
+        }
+        public IActionResult CreatePlayer () 
+        {
+            return View("Views/Accounts/CreatePlayer.cshtml");
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
