@@ -1,4 +1,5 @@
-﻿using GMLink.Models;
+﻿/*This is a test*/
+using GMLink.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
