@@ -1,5 +1,6 @@
 ﻿/*This is a test*/
 /*This too is a test*/
+//COle
 using GMLink.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
