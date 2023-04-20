@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GMLink.Models;
 using Microsoft.AspNetCore.Mvc;
+using GMLink.Models.ViewModels;
 
 namespace GMLink.Controllers
 {
@@ -14,7 +15,8 @@ namespace GMLink.Controllers
         {
             repository = repo;
         }
-        public ViewResult ListReservation() => View(repository.Reservations);
+        public ViewResult ListReservation() => View( repository.Reservations
+            .OrderBy(p => p.ReservationID));
     }
 }
 

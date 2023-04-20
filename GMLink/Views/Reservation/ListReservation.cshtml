@@ -8,8 +8,17 @@
                 <span class="float-right bg-success text-white rounded m-2 p-1">
                     @p.Price.ToString("c")
                 </span>
-            </h3>
+        </h3>
             <span class="lead">@p.Description</span>
-        </div>
+            <form id="@p.ReservationID" asp-action="AddToCart"
+              asp-controller="Cart" method="post" class="float-start m-2 p-1">
+                <input type="hidden" asp-for="@p.ReservationID" />
+                <input type="hidden" name="returnUrl"
+                       value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                <button type="submit" class="btn btn-info btn-sm float-start">
+                    Add To Cart
+                </button>
+            </form>
     </div>
+ </div>
 } 
