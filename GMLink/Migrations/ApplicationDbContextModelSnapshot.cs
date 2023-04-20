@@ -37,6 +37,10 @@ namespace GMLink.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("GameMaster")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("GameMasterID")
                         .HasColumnType("int");
 

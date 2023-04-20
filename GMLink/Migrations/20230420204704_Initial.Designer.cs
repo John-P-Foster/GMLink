@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMLink.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230420033434_Initial")]
+    [Migration("20230420204704_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -37,6 +37,10 @@ namespace GMLink.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GameMaster")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
