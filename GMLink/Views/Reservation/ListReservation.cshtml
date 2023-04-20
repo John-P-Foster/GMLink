@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Reservation>
+@foreach (var p in Model)
+{
+ <div class="card m-3 rounded">
+    <div class="card-block m-2">
+        <h3>
+            <strong>@p.Date</strong>
+                <span class="float-right bg-success text-white rounded m-2 p-1">
+                    @p.Price.ToString("c")
+                </span>
+            </h3>
+            <span class="lead">@p.Description</span>
+        </div>
+    </div>
+} 
