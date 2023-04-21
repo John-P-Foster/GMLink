@@ -15,6 +15,11 @@
       "provider": "unpkg",
       "library": "bootstrap@5.2.3",
       "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "font-awesome@6.4.0",
+      "destination": "wwwroot/lib/font-awesome/"
     }
   ]
 }
