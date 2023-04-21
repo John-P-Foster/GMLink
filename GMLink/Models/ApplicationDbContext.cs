@@ -8,6 +8,7 @@ namespace GMLink.Models
        base(options)
         { }
         public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Purchase> Purchases { get; set; }
         public DbSet<PlayerAccount> PlayerAccounts { get; set; }
     }
 }
