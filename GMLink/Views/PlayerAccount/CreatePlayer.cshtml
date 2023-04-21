@@ -1,6 +1,51 @@
 ﻿@{
-    Layout = null;
+    Layout = "_AccountCreationLayout";
 }
-<div>
-    Hello
+@model PlayerAccount
+<div class="row ms-1">
+    <form asp-action="CreatePlayerAccount" method="post">
+        <div class="form-group">
+            <label>Name:</label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Username:</label>
+            <input asp-for="Username" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Password:</label>
+            <input asp-for="Password" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Address:</label>
+            <input asp-for="Address" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Phone Number:</label>
+            <input asp-for="PhoneNumber" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Email:</label>
+            <input asp-for="Email" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Card Number:</label>
+            <input asp-for="CardNumber" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Expiration Date:</label>
+            <input asp-for="ExpirationDate" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Cardholder Name:</label>
+            <input asp-for="CardholderName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Security Code</label>
+            <input asp-for="SecurityCode" class="form-control" />
+        </div>
+        <div class="text-center">
+            <input class="btn btn-primary" type="submit" value="Create Account" />
+        </div>
+    </form>
 </div>
