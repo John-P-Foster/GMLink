@@ -1,0 +1,14 @@
+﻿@model Purchase
+<div class="row ms-1">
+    <h2>Check out now</h2>
+    <p>If you would like to associate a group with your reservation please add it now!</p>
+    <form asp-action="Checkout" method="post">
+        <h3>Group Name</h3>
+        <div class="form-group">
+            <label>Group Name:</label><input asp-for="GroupName" class="form-control" />
+        </div>
+        <div class="text-center">
+            <input class="btn btn-primary" type="submit" value="Complete Order" />
+        </div>
+    </form>
+</div>
