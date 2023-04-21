@@ -33,9 +33,11 @@ namespace GMLink.Controllers
         {
             
             Reservation reservation = repository.Reservations.FirstOrDefault(p => p.ReservationID == reservationID);
-            if (reservation != null)
+            if (reservation != null && reservation.Description != "Booked")
             {
                 cart.AddItem(reservation, 1);
+                reservation.Description = "Booked";
+                repository.SaveReservation(reservation);
             }
 
             return RedirectToAction("Index", new { returnUrl });
@@ -48,6 +50,8 @@ namespace GMLink.Controllers
         if (reservation != null)
             {
                 cart.RemoveLine(reservation);
+                reservation.Description = "Available";
+                repository.SaveReservation(reservation);
             }
             return RedirectToAction("Index", new { returnUrl });
         }
