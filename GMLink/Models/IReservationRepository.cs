@@ -8,5 +8,7 @@ namespace GMLink.Models
     public interface IReservationRepository
     {
         IEnumerable<Reservation> Reservations { get; }
+
+        void SaveReservation(Reservation reservation);
     }
 }

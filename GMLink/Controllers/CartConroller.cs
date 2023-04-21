@@ -11,16 +11,19 @@ namespace GMLink.Controllers
     {
 
         private IReservationRepository repository;
-        public CartController(IReservationRepository repo)
+
+        private Cart cart;
+        public CartController(IReservationRepository repo, Cart cartService)
         {
             repository = repo;
+            cart = cartService;
         }
 
         public ViewResult Index(string returnUrl)
         {
             return View(new CartIndexViewModel
             {
-                Cart = GetCart(),
+                Cart = cart,
                 ReturnUrl = returnUrl
             });
         }
@@ -30,11 +33,11 @@ namespace GMLink.Controllers
         {
             
             Reservation reservation = repository.Reservations.FirstOrDefault(p => p.ReservationID == reservationID);
-            if (reservation != null)
+            if (reservation != null && reservation.Description != "Booked")
             {
-                Cart cart = GetCart();
                 cart.AddItem(reservation, 1);
-                SaveCart(cart);
+                reservation.Description = "Booked";
+                repository.SaveReservation(reservation);
             }
 
             return RedirectToAction("Index", new { returnUrl });
@@ -46,20 +49,11 @@ namespace GMLink.Controllers
 
         if (reservation != null)
             {
-                Cart cart = GetCart();
                 cart.RemoveLine(reservation);
-                SaveCart(cart);
+                reservation.Description = "Available";
+                repository.SaveReservation(reservation);
             }
             return RedirectToAction("Index", new { returnUrl });
-        }
-        private Cart GetCart()
-        {
-            Cart cart = HttpContext.Session.GetJson<Cart>("Cart") ?? new Cart();
-            return cart;
-        }
-        private void SaveCart(Cart cart)
-        {
-            HttpContext.Session.SetJson("Cart", cart);
         }
     }
 }

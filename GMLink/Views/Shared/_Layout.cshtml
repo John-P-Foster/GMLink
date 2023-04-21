@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GMLink.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" asp-href-include="lib/font-awesome/css/*.css" />
 </head>
 <body>
     <header>
@@ -36,6 +37,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="PlayerAccount" asp-action="CreatePlayer">Create Player Account</a>
+                        </li>
+                        <li class="nav-item">
+                            @await Component.InvokeAsync("CartSummary")
                         </li>
                     </ul>
                 </div>

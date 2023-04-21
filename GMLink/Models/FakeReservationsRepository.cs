@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace GMLink.Models
 {
-    public class FakeReservationsRepository : IReservationRepository
+    public class FakeReservationsRepository /* : IReservationRepository */
     {
         public IEnumerable<Reservation> Reservations => new List<Reservation> {
             new Reservation { ReservationID = 1, Description = "D&D. Upto 4 players", Price = 25 },

@@ -10,6 +10,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddTransient< IReservationRepository, EFReservationRepository>();
+builder.Services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient< IPlayerAccountRepository, EFPlayerAccountRepository>();
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
