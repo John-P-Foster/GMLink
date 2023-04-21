@@ -34,10 +34,6 @@ namespace GMLink.Controllers
         {
             return View();
         }
-        public IActionResult BrowseReservations ()
-        {
-            return View("Views/Reservations/BrowseReservations.cshtml");
-        }
         public IActionResult CreatePlayer () 
         {
             return View("Views/Accounts/CreatePlayer.cshtml");
