@@ -26,16 +26,17 @@ namespace GMLink.Controllers
         }
 
 
-        public RedirectToActionResult AddToCart(int resercationID, string returnUrl)
+        public RedirectToActionResult AddToCart(int reservationID, string returnUrl)
         {
-            Reservation reservation = repository.Reservations
-            .FirstOrDefault(p => p.ReservationID == resercationID);
+            
+            Reservation reservation = repository.Reservations.FirstOrDefault(p => p.ReservationID == reservationID);
             if (reservation != null)
             {
                 Cart cart = GetCart();
                 cart.AddItem(reservation, 1);
                 SaveCart(cart);
             }
+
             return RedirectToAction("Index", new { returnUrl });
         }
         public RedirectToActionResult RemoveFromCart(int reservationID, string returnUrl)
