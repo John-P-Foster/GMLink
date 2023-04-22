@@ -8,9 +8,11 @@ namespace GMLink.Controllers
     public class PurchaseController : Controller
     {
         private IPurchaseRepository repository;
+        private IReservationRepository repositoryR;
         private Cart cart;
-        public PurchaseController(IPurchaseRepository repoService, Cart cartService)
+        public PurchaseController(IPurchaseRepository repoService, IReservationRepository repo, Cart cartService)
         {
+            repositoryR = repo;
             repository = repoService;
             cart = cartService;
         }
@@ -28,6 +30,12 @@ namespace GMLink.Controllers
                 purchase.Lines = cart.Lines.ToArray();
                 repository.SaveOrder(purchase);
                 cart.Clear();
+                foreach (var line in purchase.Lines)
+                {
+                    Reservation reservation = line.Reservation;
+                    reservation.Description = "Booked";
+                    repositoryR.SaveReservation(reservation);
+                }
                 return View("Completed");
             }
             else

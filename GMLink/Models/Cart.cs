@@ -14,19 +14,19 @@ namespace GMLink.Models
                 lineCollection.Add(new CartLine
                 {
                     Reservation = reservation,
-                    Quantity = quantity
+                    Quantity = 1
                 });
             }
 
  else
             {
-                line.Quantity += quantity;
+                line.Quantity = 1;
             }
         }
         public virtual void RemoveLine(Reservation reservation) =>
         lineCollection.RemoveAll(l => l.Reservation.ReservationID == reservation.ReservationID);
         public virtual decimal ComputeTotalValue() =>
-        lineCollection.Sum(e => e.Reservation.Price * e.Quantity);
+        lineCollection.Sum(e => e.Reservation.Price);
         public virtual void Clear() => lineCollection.Clear();
         public virtual IEnumerable<CartLine> Lines => lineCollection;
     }

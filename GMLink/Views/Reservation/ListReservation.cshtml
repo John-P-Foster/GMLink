@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<Reservation>
+
 @foreach (var p in Model)
 {
+    Cart cart = new Cart();
     if (p.Description != "Booked")
     {
         <div class="card m-3 rounded">

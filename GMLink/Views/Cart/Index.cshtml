@@ -4,7 +4,7 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th class="text-center">Quantity</th>
+                <th class="text-center">Date</th>
                 <th>Item</th>
                 <th class="text-right">Price</th>
                 <th class="text-right">Subtotal</th>
@@ -14,11 +14,10 @@
             @foreach (var line in Model.Cart.Lines)
             {
                 <tr>
-                    <td class="text-center">@line.Quantity</td>
+                    <td class="text-center">@line.Reservation.Date</td>
                     <td class="text-left">@line.Reservation.GameMaster</td>
                     <td class="text-right">@line.Reservation.Price.ToString("c")</td>
                     <td class="text-right">
-                        @((line.Quantity * line.Reservation.Price).ToString("c"))
                     </td>
                     <td>
                         <form asp-action="RemoveFromCart" method="post">

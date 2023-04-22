@@ -36,8 +36,7 @@ namespace GMLink.Controllers
             if (reservation != null && reservation.Description != "Booked")
             {
                 cart.AddItem(reservation, 1);
-                reservation.Description = "Booked";
-                repository.SaveReservation(reservation);
+
             }
 
             return RedirectToAction("Index", new { returnUrl });
