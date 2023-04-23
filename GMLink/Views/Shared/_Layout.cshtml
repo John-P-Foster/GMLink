@@ -36,9 +36,6 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Reservation" asp-action="listReservation">Reservations</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="PlayerAccount" asp-action="CreatePlayer">Create Player Account</a>
-                        </li>
-                        <li class="nav-item">
                             @await Component.InvokeAsync("CartSummary")
                         </li>
                     </ul>
