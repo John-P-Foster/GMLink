@@ -21,10 +21,7 @@ namespace GMLink.Controllers
         [AllowAnonymous]
         public ViewResult Login(string returnUrl)
         {
-            return View(new LoginModel
-            {
-                ReturnUrl = returnUrl
-            });
+            return View(new LoginModel());
         }
         [HttpPost]
         [AllowAnonymous]
@@ -41,7 +38,7 @@ namespace GMLink.Controllers
                     loginModel.Password, false, false)).Succeeded)
                     {
                         CurrentUser = user;
-                        return Redirect(loginModel.ReturnUrl);
+                        return Redirect("/");
                     }
                 }
             }

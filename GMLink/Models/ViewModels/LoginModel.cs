@@ -8,6 +8,5 @@ namespace GMLink.Models.ViewModels
         [Required]
         [UIHint("password")]
         public string Password { get; set; }
-        public string ReturnUrl { get; set; } = "/";
     }
 }
