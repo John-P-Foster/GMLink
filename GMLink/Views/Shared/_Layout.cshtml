@@ -49,6 +49,14 @@
         </main>
     </div>
 
+    <div class="card-body">
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-success">@TempData["message"]</div>
+        }
+        @RenderBody()
+    </div>
+
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2023 - GMLink - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
