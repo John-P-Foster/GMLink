@@ -11,5 +11,6 @@ namespace GMLink.Models
         { }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
+        public DbSet<AppUserDetail> AppUserDetails { get; set; }
     }
 }

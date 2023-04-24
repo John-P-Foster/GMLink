@@ -1,6 +1,7 @@
 ﻿using GMLink.Models;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace GMLink.Controllers
 {
     public class AccountDetails : Controller
