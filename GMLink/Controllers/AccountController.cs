@@ -41,14 +41,14 @@ namespace GMLink.Controllers
                     loginModel.Password, false, false)).Succeeded)
                     {
                         CurrentUser = user;
-                        return Redirect(loginModel?.ReturnUrl ?? "/Admin/Index");
+                        return Redirect(loginModel.ReturnUrl);
                     }
                 }
             }
             ModelState.AddModelError("", "Invalid name or password");
             return View(loginModel);
         }
-        public async Task<RedirectResult> Logout(string returnUrl = "/")
+        public async Task<RedirectResult> Logout(string returnUrl = "/Home/Index")
         {
             CurrentUser = null;
             await signInManager.SignOutAsync();
@@ -100,27 +100,6 @@ namespace GMLink.Controllers
             {
                 ModelState.TryAddModelError("", error.Description);
             }
-        }
-        public async Task<IActionResult> Delete(string id)
-        {
-            AppUser user = await userManager.FindByIdAsync(id);
-            if (user != null)
-            {
-                IdentityResult result = await userManager.DeleteAsync(user);
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    AddErrors(result);
-                }
-            }
-            else
-            {
-                ModelState.AddModelError("", "User Not Found");
-            }
-            return View("Index", userManager.Users);
         }
         public async Task<IActionResult> Edit(string id)
         {

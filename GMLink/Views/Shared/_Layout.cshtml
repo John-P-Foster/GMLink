@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using GMLink.Controllers
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -38,12 +40,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="GMBookings" asp-action="ViewBookings">GM Bookings</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Create">Create Account</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="AccountDetails" asp-action="Index">View Account</a>
-                        </li>
+                        @if (AccountController.CurrentUser == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                        }
+                        @if (AccountController.CurrentUser != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="AccountDetails" asp-action="Index">View Account</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             @await Component.InvokeAsync("CartSummary")
                         </li>
