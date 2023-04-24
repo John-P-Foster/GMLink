@@ -1,5 +1,8 @@
-using GMLink.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using GMLink.Models;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +16,9 @@ builder.Services.AddTransient< IReservationRepository, EFReservationRepository>(
 builder.Services.AddTransient<IPurchaseRepository, EFPurchaseRepository>();
 builder.Services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddIdentity<User, IdentityRole<Guid>>()
+ .AddEntityFrameworkStores<ApplicationDbContext>()
+ .AddDefaultTokenProviders();
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 
@@ -28,7 +34,7 @@ if (!app.Environment.IsDevelopment())
 //oogaly boogaly
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseAuthentication();
 app.UseRouting();
 
 app.UseAuthorization();
