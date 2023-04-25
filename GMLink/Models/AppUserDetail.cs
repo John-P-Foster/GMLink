@@ -9,7 +9,9 @@ namespace GMLink.Models
 {
     public class AppUserDetail
     {
-        public int AppUserDetailID { get; set; }
+        [Required(ErrorMessage = "TEST")]
+        public int? AppUserDetailID { get; set; }
+        [Required(ErrorMessage = "TEST2")]
         public string? Username { get; set; }
         [Required(ErrorMessage = "Please enter your first name")]
         public string FirstName { get; set; }
