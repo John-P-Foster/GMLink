@@ -20,6 +20,16 @@
       "provider": "cdnjs",
       "library": "font-awesome@6.4.0",
       "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "library": "jquery-validate@1.19.5",
+      "destination": "wwwroot/lib/jquery-validation",
+      "files": [ "jquery.validate.min.js" ]
+    },
+    {
+      "library": "jquery-validation-unobtrusive@4.0.0",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive",
+      "files": [ "jquery.validate.unobtrusive.min.js" ]
     }
   ]
 }

@@ -34,4 +34,6 @@ namespace GMLink.Models
                 }
             }
             context.SaveChanges();
-        } 
+        }
+    }
+}

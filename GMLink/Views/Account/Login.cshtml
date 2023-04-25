@@ -3,7 +3,7 @@
     ViewBag.Title = "Log In";
     Layout = "_AdminLayout";
 }
-<div class="text-danger" asp-validation-summary="All"></div>
+<div class="text-danger" asp-validation-summary="ModelOnly"></div>
 <form asp-action="Login" asp-controller="Account" method="post">
     <div class="form-group">
         <label asp-for="UserName"></label>

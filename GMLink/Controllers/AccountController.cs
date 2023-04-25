@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using GMLink.Models.ViewModels;
 using GMLink.Models;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace GMLink.Controllers
 {
@@ -74,12 +75,12 @@ namespace GMLink.Controllers
                 {
                     UserName = model.UserName,
                 };
-                IdentityResult result = await userManager.CreateAsync(user,
-               model.Password);
+                IdentityResult result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    CurrentUser = user;
                     //await signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index");
+                    return Redirect("/AccountDetails/Create");
                 }
                 else
                 {

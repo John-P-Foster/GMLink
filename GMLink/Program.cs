@@ -14,6 +14,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddTransient< IReservationRepository, EFReservationRepository>();
 builder.Services.AddTransient<IPurchaseRepository, EFPurchaseRepository>();
+builder.Services.AddTransient<IAppUserDetailRepository, EFAppUserDetailRepository>();
 builder.Services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
