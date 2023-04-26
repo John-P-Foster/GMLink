@@ -5,6 +5,9 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 	<ItemGroup>
+	  <Content Remove="Views\Account\EditRes.cshtml" />
+	</ItemGroup>
+	<ItemGroup>
 		<Folder Include="Migrations\" />
 		<Folder Include="wwwroot\" />
 	</ItemGroup>
@@ -28,5 +31,14 @@
 	</ItemGroup>
 	<ItemGroup>
 		<DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Views\Account\EditRes.cshtml" />
+	</ItemGroup>
+	<ItemGroup>
+	  <_ContentIncludedByDefault Remove="Views\Account\EditRes.cshtml" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Include="Views\Account\EditRes.cshtml" />
 	</ItemGroup>
 </Project>
