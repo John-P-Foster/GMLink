@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using GMLink.Controllers
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -36,8 +38,20 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Reservation" asp-action="listReservation">Reservations</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="PlayerAccount" asp-action="CreatePlayer">Create Player Account</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="GMBookings" asp-action="ViewBookings">GM Bookings</a>
                         </li>
+                        @if (AccountController.CurrentUser == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                        }
+                        @if (AccountController.CurrentUser != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="AccountDetails" asp-action="Index">View Account</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             @await Component.InvokeAsync("CartSummary")
                         </li>
@@ -50,6 +64,14 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+    </div>
+
+    <div class="card-body">
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-success">@TempData["message"]</div>
+        }
+        @RenderBody()
     </div>
 
     <footer class="border-top footer text-muted">

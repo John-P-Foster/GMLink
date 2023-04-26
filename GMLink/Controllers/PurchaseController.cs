@@ -30,6 +30,7 @@ namespace GMLink.Controllers
                 purchase.UserName = AccountController.CurrentUser.UserName;
                 purchase.Lines = cart.Lines.ToArray();
                 repository.SaveOrder(purchase);
+                TempData["message"] = $"reservation number {purchase.PurchaseID} has been saved";
                 cart.Clear();
                 foreach (var line in purchase.Lines)
                 {
