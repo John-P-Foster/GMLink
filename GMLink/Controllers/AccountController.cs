@@ -135,5 +135,6 @@ namespace GMLink.Controllers
                 return View(reservation);
             }
         }
+        public ViewResult CreateReservation() => View("EditReservations", new Reservation());
     }
 }
