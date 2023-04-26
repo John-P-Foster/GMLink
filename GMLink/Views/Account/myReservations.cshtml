@@ -18,11 +18,11 @@
             <td class="text-right">@item.Price.ToString("c")</td>
             <td class="text-center">
                 <form asp-action="Delete" method="post">
-                    <a asp-action="Edit" class="btn btn-sm btn-warning"
-                   asp-route-productId="@item.ReservationID">
-                        Edit
+                    <a asp-action="EditReservations" class="btn btn-sm btn-warning"
+                   asp-route-reservationId="@item.ReservationID">
+                        Edit reservation
                     </a>
-                    <input type="hidden" name="ProductID" value="@item.ReservationID" />
+                    <input type="hidden" name="ReservationID" value="@item.ReservationID" />
                     <button type="submit" class="btn btn-danger btn-sm">
                         Delete
                     </button>
@@ -32,5 +32,5 @@
     }
 </table>
 <div class="text-center">
-    <a asp-action="Create" class="btn btn-primary">Add Product</a>
+    <a asp-action="EditReservations" class="btn btn-primary">Add Reservation</a>
 </div>

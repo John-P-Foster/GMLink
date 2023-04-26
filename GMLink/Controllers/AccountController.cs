@@ -115,10 +115,25 @@ namespace GMLink.Controllers
                 return RedirectToAction("Index");
             }
         }
-        public ViewResult EditRes(int reservationId) =>
+        public ViewResult EditReservations(int reservationId) =>
            View(resRepositroy.Reservations
                .FirstOrDefault(p => p.ReservationID == reservationId));
         public ViewResult myReservations() => View(resRepositroy.Reservations);
 
+        [HttpPost]
+        public IActionResult EditReservations(Reservation reservation)
+        {
+            if (ModelState.IsValid)
+            {
+                resRepositroy.SaveReservation(reservation);
+                TempData["message"] = $"{reservation.ReservationID} has been saved";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                // there is something wrong with the data values
+                return View(reservation);
+            }
+        }
     }
 }
