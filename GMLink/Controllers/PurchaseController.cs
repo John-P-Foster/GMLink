@@ -27,6 +27,7 @@ namespace GMLink.Controllers
             }
             if (ModelState.IsValid)
             {
+                purchase.UserName = AccountController.CurrentUser.UserName;
                 purchase.Lines = cart.Lines.ToArray();
                 repository.SaveOrder(purchase);
                 TempData["message"] = $"reservation number {purchase.PurchaseID} has been saved";

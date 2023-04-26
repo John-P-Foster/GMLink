@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using GMLink.Models.ViewModels;
 using GMLink.Models;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -13,11 +14,14 @@ namespace GMLink.Controllers
         public static AppUser? CurrentUser { get; set; }
         private UserManager<AppUser> userManager;
         private SignInManager<AppUser> signInManager;
+        private IReservationRepository resRepositroy;
+
         public AccountController(UserManager<AppUser> userMgr,
-        SignInManager<AppUser> signInMgr)
+        SignInManager<AppUser> signInMgr, IReservationRepository repository)
         {
             userManager = userMgr;
             signInManager = signInMgr;
+            resRepositroy = repository;
         }
         [AllowAnonymous]
         public ViewResult Login(string returnUrl)
@@ -111,5 +115,10 @@ namespace GMLink.Controllers
                 return RedirectToAction("Index");
             }
         }
+        public ViewResult EditRes(int reservationId) =>
+           View(resRepositroy.Reservations
+               .FirstOrDefault(p => p.ReservationID == reservationId));
+        public ViewResult myReservations() => View(resRepositroy.Reservations);
+
     }
 }
