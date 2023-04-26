@@ -10,6 +10,7 @@ namespace GMLink.Models
         [BindNever]
         public ICollection<CartLine> Lines { get; set; } = new List<CartLine>();
         public string GroupName { get; set; }
- 
+        public string? UserName { get; set; }
+
     } 
 }
