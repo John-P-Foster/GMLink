@@ -1,0 +1,17 @@
+﻿@using GMLink.Controllers
+@model IEnumerable<AppUserDetail>
+
+@foreach (var p in Model)
+{
+    if (p.Username.Equals(AccountController.CurrentUser.UserName))
+    {
+        <div class="card m-3 rounded">
+            @p.Username<br>
+            @p.FirstName @p.LastName<br>
+            @p.Email<br>
+            @p.PhoneNumber<br>
+            @p.Address<br>
+            <a asp-action="Edit" class="btn btn-sm btn-warning" asp-route-productId="@p.AppUserDetailID">Edit</a>
+        </div>
+    }
+} 

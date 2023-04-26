@@ -14,11 +14,14 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddTransient< IReservationRepository, EFReservationRepository>();
 builder.Services.AddTransient<IPurchaseRepository, EFPurchaseRepository>();
+builder.Services.AddTransient<IAppUserDetailRepository, EFAppUserDetailRepository>();
 builder.Services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-builder.Services.AddIdentity<User, IdentityRole<Guid>>()
+
+builder.Services.AddIdentity<AppUser, IdentityRole<Guid>>()
  .AddEntityFrameworkStores<ApplicationDbContext>()
  .AddDefaultTokenProviders();
+
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 
