@@ -22,6 +22,7 @@ namespace GMLink.Controllers
         [HttpPost]
         public IActionResult Edit(AppUserDetail appUserDetail)
         {
+            appUserDetail.Username = AccountController.CurrentUser.UserName;
             if (ModelState.IsValid)
             {
                 repository.SaveAppUserDetail(appUserDetail);

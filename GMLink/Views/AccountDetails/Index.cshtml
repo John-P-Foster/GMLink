@@ -6,12 +6,12 @@
     if (p.Username.Equals(AccountController.CurrentUser.UserName))
     {
         <div class="card m-3 rounded">
-            @p.Username<br>
-            @p.FirstName @p.LastName<br>
-            @p.Email<br>
-            @p.PhoneNumber<br>
-            @p.Address<br>
-            <a asp-action="Edit" class="btn btn-sm btn-warning" asp-route-productId="@p.AppUserDetailID">Edit</a>
+            <p>Name: @p.FirstName @p.LastName</p><br>
+            <p>Email: @p.Email</p><br>
+            <p>Phone number: @p.PhoneNumber</p><br>
+            <p>Address: @p.Address</p><br>
+            <a asp-action="Edit" class="btn btn-sm btn-warning" asp-route-AppUserDetailID="@p.AppUserDetailID">Edit</a>
+            <a asp-action="Logout"></a>
         </div>
     }
 } 
