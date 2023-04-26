@@ -11,8 +11,7 @@
             <p>Phone number: @p.PhoneNumber</p><br>
             <p>Address: @p.Address</p><br>
             <a asp-action="Edit" class="btn btn-sm btn-warning" asp-route-AppUserDetailID="@p.AppUserDetailID">Edit</a>
-            <a asp-action="Logout"></a>
-            <p>John Foster</p>
+            <a asp-controller="Account" asp-action="Logout" class="btn btn-sm btn-dark">Log out</a>
         </div>
     }
 } 
