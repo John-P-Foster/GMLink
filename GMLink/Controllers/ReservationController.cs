@@ -35,7 +35,7 @@ namespace GMLink.Controllers
             {
                 repository.SaveReservation(reservation);
                 TempData["message"] = $"{reservation.ReservationID} has been saved";
-                return RedirectToAction("Index");
+                return RedirectToAction("myReservations");
             }
             else
             {
