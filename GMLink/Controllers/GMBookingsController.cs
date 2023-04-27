@@ -6,7 +6,12 @@ namespace GMLink.Controllers
 {
     public class GMBookingsController : Controller
     {
-        public IActionResult ViewBookings()
+        private IPurchaseRepository repository;
+        public GMBookingsController(IPurchaseRepository repository)
+        {
+            this.repository = repository;
+        }
+            public IActionResult ViewBookings()
         {
             return View();
         }
