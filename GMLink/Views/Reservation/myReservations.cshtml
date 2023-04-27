@@ -25,10 +25,13 @@
             <td>@item.Description</td>
             <td class="text-center">
                 <form asp-action="Delete" method="post">
-                    <a asp-action="EditReservations" class="btn btn-sm btn-warning"
-                   asp-route-reservationId="@item.ReservationID">
-                        Edit reservation
-                    </a>
+                        @if (item.Description == null)
+                        {
+                            <a asp-action="EditReservations" class="btn btn-sm btn-warning"
+                            asp-route-reservationId="@item.ReservationID">
+                            Edit reservation
+                             </a>
+                    }
                     <input type="hidden" name="ReservationID" value="@item.ReservationID" />
                     <button type="submit" class="btn btn-danger btn-sm">
                         Delete

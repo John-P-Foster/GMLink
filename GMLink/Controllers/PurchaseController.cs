@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using GMLink.Models;
+using GMLink.Controllers;
 using Microsoft.AspNetCore.Authorization;
 
 namespace GMLink.Controllers
@@ -37,7 +38,7 @@ namespace GMLink.Controllers
                 foreach (var line in purchase.Lines)
                 {
                     Reservation reservation = line.Reservation;
-                    reservation.Description = "Booked";
+                    reservation.Description = AccountController.CurrentUser.UserName;
                     repositoryR.SaveReservation(reservation);
                 }
                 return View("Completed");

@@ -3,7 +3,7 @@
 @foreach (var p in Model)
 {
     Cart cart = new Cart();
-    if (p.Description != "Booked")
+    if (p.Description == null)
     {
         <div class="card m-3 rounded">
             <div class="card-block m-2">
