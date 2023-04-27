@@ -8,9 +8,10 @@
     <tr>
        
         <!--<th class="text-right">ID</th>-->
-        <th>Name</th>
+        <th>Date and Time</th>
+        <th>Discription</th>
         <th class="text-right">Price</th>
-        <th class="text-center">Actions</th>
+        <th class="text-center">Booked?</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -18,9 +19,10 @@
         {
             <tr>
                 <!--<td class="text-right">@item.ReservationID</td>-->
-            <td class="text-right">@item.ReservationID</td>
-            <td>@item.GameMaster</td>
+            <td class="text-right">@item.Date</td>
+            <td>@item.About</td>
             <td class="text-right">@item.Price.ToString("c")</td>
+            <td>@item.Description</td>
             <td class="text-center">
                 <form asp-action="Delete" method="post">
                     <a asp-action="EditReservations" class="btn btn-sm btn-warning"
