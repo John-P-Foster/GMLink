@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Reservation>
+﻿@using GMLink.Controllers
+@model IEnumerable<Reservation>
 @{
     ViewBag.Title = "All Reservations";
     Layout = "_Layout";
@@ -13,8 +14,10 @@
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
-            <!--<td class="text-right">@item.ReservationID</td>-->
+        if (item.GameMaster == AccountController.CurrentUser.UserName)
+        {
+            <tr>
+                <!--<td class="text-right">@item.ReservationID</td>-->
             <td class="text-right">@item.ReservationID</td>
             <td>@item.GameMaster</td>
             <td class="text-right">@item.Price.ToString("c")</td>
@@ -31,6 +34,7 @@
                 </form>
             </td>
         </tr>
+        }
     }
 </table>
 <div class="text-center">

@@ -1,14 +1,14 @@
-﻿@model Reservation
+﻿@using GMLink.Controllers
+@model Reservation
 @{
     ViewBag.Title = "Edit Reservation";
     Layout = "_Layout";
 }
+   
 <form asp-action="EditReservations" method="post">
     <input type="hidden" asp-for="ReservationID" />
-    <div class="form-group">
-        <label asp-for="GameMaster"></label>
-        <input asp-for="GameMaster" class="form-control" />
-    </div>
+    <input type="hidden" asp-for="GameMaster" value="@AccountController.CurrentUser.UserName"  />
+
     <div class="form-group">
         <label asp-for="Description"></label>
         <textarea asp-for="Description" class="form-control"></textarea>

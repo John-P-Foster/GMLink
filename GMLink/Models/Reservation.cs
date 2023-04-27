@@ -15,5 +15,7 @@ namespace GMLink.Models
         public decimal Price { get; set; }
         public String Description { get; set; }
 
+        
+
     }
 }
