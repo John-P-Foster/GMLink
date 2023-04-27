@@ -30,6 +30,7 @@ namespace GMLink.Controllers
             }
             if (ModelState.IsValid)
             {
+                decimal price = 0;
                 purchase.UserName = AccountController.CurrentUser.UserName;
                 purchase.Lines = cart.Lines.ToArray();
                 repository.SaveOrder(purchase);
@@ -39,8 +40,10 @@ namespace GMLink.Controllers
                 {
                     Reservation reservation = line.Reservation;
                     reservation.Description = AccountController.CurrentUser.UserName;
+                    price += reservation.Price;
                     repositoryR.SaveReservation(reservation);
                 }
+                purchase.Total = price;
                 return View("Completed");
             }
             else
