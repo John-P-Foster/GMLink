@@ -12,6 +12,7 @@
             <div class="card-block m-2">
                 <a asp-action="Edit" class="btn btn-sm btn-warning" asp-route-AppUserDetailID="@p.AppUserDetailID">Edit</a>
                 <a asp-controller="Reservation" asp-action="myReservations" class="btn btn-sm btn-info">View and Edit Reservations</a>
+                <a asp-controller="GMBookings" asp-action="ViewBookings" class="btn btn-sm btn-warning"> View Past Orders</a>
                 <a asp-controller="Account" asp-action="Logout" class="btn btn-sm btn-dark">Log out</a>
             </div>
             <p>Name: @p.FirstName @p.LastName</p><br>

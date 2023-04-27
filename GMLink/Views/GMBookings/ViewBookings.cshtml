@@ -1,16 +1,18 @@
 ﻿@using GMLink.Controllers
 @model IEnumerable<Purchase>
 
-
 @if (Model.Count() > 0)
 { 
+
 <table class="table table-bordered table-striped">
         <tr>
             <th>OderNumber</th>
-            <th>GameMaster</th>
-            <th>Groupname</th>
-            <th colspan="2">Details</th>
-            <th></th>
+            <th>User Name</th>
+            <th>Group Name</th>
+            <th>Game Master</th>
+            <th>Date and Time</th>
+            <th> Session Details</th>
+            <th> Session Price</th>
          </tr> 
              @foreach (Purchase p in Model)
              {
@@ -28,10 +30,11 @@
                 if (p.UserName.Equals(AccountController.CurrentUser.UserName) || AccountController.CurrentUser.UserName == "Admin123")
                 {
                      <tr>
-                     <td colspan="2"></td>
+                     <td colspan="3"></td>
                      <td>@line.Reservation.GameMaster</td>
                      <td>@line.Reservation.Date</td>
                      <td>@line.Reservation.About</td>
+                        <td>@line.Reservation.Price.ToString("c")</td>
                     </tr>
                 }
                 }
