@@ -10,5 +10,7 @@ namespace GMLink.Models
         IEnumerable<Reservation> Reservations { get; }
 
         void SaveReservation(Reservation reservation);
+
+        Reservation DeleteReservation(int  reservationId);   
     }
 }

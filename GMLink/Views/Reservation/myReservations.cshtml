@@ -11,11 +11,12 @@
         <th>Date and Time</th>
         <th>Discription</th>
         <th class="text-right">Price</th>
-        <th class="text-center">Booked?</th>
+        <th class="text-center">Booked by</th>
+        <th class="text-center">Change Offered Reservations</th>
     </tr>
     @foreach (var item in Model)
     {
-        if (item.GameMaster == AccountController.CurrentUser.UserName)
+        if (item.GameMaster == AccountController.CurrentUser.UserName || AccountController.CurrentUser.UserName == "Admin123")
         {
             <tr>
                 <!--<td class="text-right">@item.ReservationID</td>-->
@@ -24,8 +25,8 @@
             <td class="text-right">@item.Price.ToString("c")</td>
             <td>@item.Description</td>
             <td class="text-center">
-                <form asp-action="Delete" method="post">
-                        @if (item.Description == null)
+                    <form asp-action="DeleteReservation" method="post">
+                        @if (item.Description == null || AccountController.CurrentUser.UserName == "Admin123")
                         {
                             <a asp-action="EditReservations" class="btn btn-sm btn-warning"
                             asp-route-reservationId="@item.ReservationID">
@@ -34,7 +35,7 @@
                     }
                     <input type="hidden" name="ReservationID" value="@item.ReservationID" />
                     <button type="submit" class="btn btn-danger btn-sm">
-                        Delete
+                        Cancel Offering
                     </button>
                 </form>
             </td>

@@ -1,4 +1,6 @@
-﻿namespace GMLink.Models
+﻿using System.Reflection.PortableExecutable;
+
+namespace GMLink.Models
 {
     public class EFReservationRepository : IReservationRepository
     { 
@@ -28,6 +30,17 @@
                 }
             }
             context.SaveChanges();
+        }
+        public Reservation DeleteReservation(int reservaionID)
+        {
+            Reservation dbEntry = context.Reservations
+                .FirstOrDefault(p => p.ReservationID == reservaionID);
+            if (dbEntry != null)
+            {
+                context.Reservations.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
         }
 
     }

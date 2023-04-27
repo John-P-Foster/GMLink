@@ -46,6 +46,17 @@ namespace GMLink.Controllers
         [Authorize]
         public ViewResult CreateReservation() => View("EditReservations", new Reservation());
 
+        [HttpPost]
+        public IActionResult DeleteReservation(int reservationId)
+        {
+            Reservation deletedReservation = repository.DeleteReservation(reservationId);
+            if (deletedReservation != null)
+            {
+                TempData["message"] = $"{deletedReservation.ReservationID} deleted";
+            }
+            return RedirectToAction("myReservations");
+        }
+
     }
 }
 

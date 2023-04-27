@@ -9,6 +9,18 @@
     <input type="hidden" asp-for="ReservationID" />
     <input type="hidden" asp-for="GameMaster" value="@AccountController.CurrentUser.UserName"  />
 
+    @if(AccountController.CurrentUser.UserName == "Admin123")
+    {
+        <div class="form-group">
+            <label asp-for="GameMaster">Set GameMaster</label>
+            <textarea asp-for="GameMaster" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description">Set Booked by</label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+        </div>
+    }
+
     <div class="form-group">
         <label asp-for="About"></label>
         <textarea asp-for="About" class="form-control"></textarea>
