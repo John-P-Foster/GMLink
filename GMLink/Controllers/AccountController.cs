@@ -14,14 +14,12 @@ namespace GMLink.Controllers
         public static AppUser? CurrentUser { get; set; }
         private UserManager<AppUser> userManager;
         private SignInManager<AppUser> signInManager;
-        private IReservationRepository resRepositroy;
 
         public AccountController(UserManager<AppUser> userMgr,
-        SignInManager<AppUser> signInMgr, IReservationRepository repository)
+        SignInManager<AppUser> signInMgr)
         {
             userManager = userMgr;
             signInManager = signInMgr;
-            resRepositroy = repository;
         }
         [AllowAnonymous]
         public ViewResult Login(string returnUrl)
@@ -115,26 +113,5 @@ namespace GMLink.Controllers
                 return RedirectToAction("Index");
             }
         }
-        public ViewResult EditReservations(int reservationId) =>
-           View(resRepositroy.Reservations
-               .FirstOrDefault(p => p.ReservationID == reservationId));
-        public ViewResult myReservations() => View(resRepositroy.Reservations);
-
-        [HttpPost]
-        public IActionResult EditReservations(Reservation reservation)
-        {
-            if (ModelState.IsValid)
-            {
-                resRepositroy.SaveReservation(reservation);
-                TempData["message"] = $"{reservation.ReservationID} has been saved";
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                // there is something wrong with the data values
-                return View(reservation);
-            }
-        }
-        public ViewResult CreateReservation() => View("EditReservations", new Reservation());
     }
 }

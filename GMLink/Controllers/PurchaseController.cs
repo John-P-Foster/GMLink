@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using GMLink.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GMLink.Controllers
 {
@@ -16,7 +17,7 @@ namespace GMLink.Controllers
             repository = repoService;
             cart = cartService;
         }
-        
+        [Authorize]
         public ViewResult Checkout() => View(new Purchase());
 
         [HttpPost]
