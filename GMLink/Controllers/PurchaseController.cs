@@ -16,6 +16,7 @@ namespace GMLink.Controllers
             repository = repoService;
             cart = cartService;
         }
+        
         public ViewResult Checkout() => View(new Purchase());
 
         [HttpPost]
