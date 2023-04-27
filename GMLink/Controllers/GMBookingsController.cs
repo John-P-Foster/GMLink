@@ -1,14 +1,24 @@
-﻿using GMLink.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using GMLink.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+using GMLink.Models.ViewModels;
 
 namespace GMLink.Controllers
 {
     public class GMBookingsController : Controller
     {
-        public IActionResult ViewBookings()
+        private IPurchaseRepository repository;
+
+        public GMBookingsController (IPurchaseRepository repo)
         {
-            return View();
+
+            repository = repo;
         }
+        public ViewResult ViewBookings() => View(repository.Purchases
+            .OrderBy(p => p.PurchaseID));
+       
     }
 }

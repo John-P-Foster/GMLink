@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMLink.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230426174122_M2")]
+    [Migration("20230426174909_M2")]
     partial class M2
     {
         /// <inheritdoc />
