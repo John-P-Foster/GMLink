@@ -1,4 +1,5 @@
 ﻿using GMLink.Models;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -26,7 +27,7 @@ namespace GMLink.Controllers
             {
                 repository.SaveAppUserDetail(appUserDetail);
                 TempData["message"] = $"account changes have been saved";
-                return Redirect("/");
+                return Redirect("Index");
             }
             else
             {

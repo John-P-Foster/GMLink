@@ -21,8 +21,7 @@ namespace GMLink.Models
             }
             else
             {
-                AppUserDetail dbEntry = context.AppUserDetails
-                .FirstOrDefault(p => p.AppUserDetailID == appUserDetail.AppUserDetailID);
+                AppUserDetail dbEntry = context.AppUserDetails.FirstOrDefault(p => p.AppUserDetailID == appUserDetail.AppUserDetailID);
                 if (dbEntry != null)
                 {
                     dbEntry.Username = appUserDetail.Username;

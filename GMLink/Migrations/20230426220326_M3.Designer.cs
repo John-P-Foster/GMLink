@@ -12,8 +12,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMLink.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
+<<<<<<<< HEAD:GMLink/Migrations/20230426174909_M2.Designer.cs
     [Migration("20230426174909_M2")]
     partial class M2
+========
+    [Migration("20230426220326_M3")]
+    partial class M3
+>>>>>>>> 710b651e5ffc1c713a2d26fc8347eb37867c5794:GMLink/Migrations/20230426220326_M3.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
