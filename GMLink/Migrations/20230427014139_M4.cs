@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GMLink.Migrations
 {
     /// <inheritdoc />
-    public partial class M3 : Migration
+    public partial class M4 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
