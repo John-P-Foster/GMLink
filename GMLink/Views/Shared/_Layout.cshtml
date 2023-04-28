@@ -42,6 +42,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Reservation" asp-action="listReservation">Reservations</a>
                         </li>
+                        @if(AccountController.CurrentUser != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Group" asp-action="ListGroups"></a>
+                            </li>
+                        }
                         @if (AccountController.CurrentUser == null)
                         {
                             <li class="nav-item">
