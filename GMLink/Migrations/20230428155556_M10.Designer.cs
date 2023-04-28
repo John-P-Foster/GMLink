@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMLink.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230428003437_M9")]
-    partial class M9
+    [Migration("20230428155556_M10")]
+    partial class M10
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
