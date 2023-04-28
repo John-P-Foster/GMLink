@@ -7,8 +7,11 @@
    
 <form asp-action="EditReservations" method="post">
     <input type="hidden" asp-for="ReservationID" />
-    <input type="hidden" asp-for="GameMaster" value="@AccountController.CurrentUser.UserName"  />
 
+    @if (AccountController.CurrentUser.UserName != "Admin123")
+    {
+        <input type="hidden" asp-for="GameMaster" value="@AccountController.CurrentUser.UserName"  />
+    }
     @if(AccountController.CurrentUser.UserName == "Admin123")
     {
         <div class="form-group">

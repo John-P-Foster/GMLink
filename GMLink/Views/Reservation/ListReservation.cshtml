@@ -1,20 +1,36 @@
 ﻿@model IEnumerable<Reservation>
-
+<h1>Reservations Currently Available</h1>
 @foreach (var p in Model)
 {
     Cart cart = new Cart();
     if (p.Description == null)
     {
-        <div class="card m-3 rounded">
+        <div class="card m-3 rounded bg-light" style="width: 50rem; margin: auto;">
             <div class="card-block m-2">
                 <h3>
-                    <strong>@p.Date</strong>
-                    <span class="float-right bg-success text-white rounded m-2 p-1">
-                        @p.Price.ToString("c")
-                        @p.GameMaster.ToString()
-                    </span>
+                    <strong>  GameMaster: @p.GameMaster</strong>
+                    
                 </h3>
-                <span class="lead">@p.Description</span>
+                <p>
+                    <span class="rounded m-2 p-1">
+                       <strong> Date: </strong> @p.Date
+                    </span>
+                    <span class="bg-warning text-black rounded m-2">
+                        <strong> Price: </strong> @p.Price.ToString("c")
+                    </span>
+                </p>
+                <p>
+                    <span class="bg-success text-white rounded m-2 p-1">
+                        Start Time: @p.StartTime End Time: @p.EndTime
+                    </span>
+                </p>
+                <p>
+                    <span class="card m-3 rounded text-black">
+                        @p.About
+                    </span>
+                </p>
+   
+               
                 <form id="@p.ReservationID" asp-action="AddToCart"
               asp-controller="Cart" method="post" class="float-start m-2 p-1">
                     <input type="hidden" name="reservationID" value="@p.ReservationID"/>
