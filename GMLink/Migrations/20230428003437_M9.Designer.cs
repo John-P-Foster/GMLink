@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMLink.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230427225824_M6")]
-    partial class M6
+    [Migration("20230428003437_M9")]
+    partial class M9
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -203,6 +203,9 @@ namespace GMLink.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("EndTime")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("GameMaster")
                         .HasColumnType("nvarchar(max)");
 
@@ -211,6 +214,9 @@ namespace GMLink.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("StartTime")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ReservationID");
 

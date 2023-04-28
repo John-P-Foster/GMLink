@@ -200,6 +200,9 @@ namespace GMLink.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("EndTime")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("GameMaster")
                         .HasColumnType("nvarchar(max)");
 
@@ -208,6 +211,9 @@ namespace GMLink.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("StartTime")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ReservationID");
 
