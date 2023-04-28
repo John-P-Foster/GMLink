@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMLink.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230428155556_M10")]
-    partial class M10
+    [Migration("20230428203000_M11")]
+    partial class M11
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -151,6 +151,41 @@ namespace GMLink.Migrations
                     b.HasIndex("ReservationID");
 
                     b.ToTable("CartLine");
+                });
+
+            modelBuilder.Entity("GMLink.Models.Group", b =>
+                {
+                    b.Property<int>("GroupID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GroupID"));
+
+                    b.Property<string>("GroupName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Member1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Member2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Member3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Member4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Member5")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Member6")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("GroupID");
+
+                    b.ToTable("Groups");
                 });
 
             modelBuilder.Entity("GMLink.Models.Purchase", b =>

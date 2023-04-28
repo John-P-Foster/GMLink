@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GMLink.Migrations
 {
     /// <inheritdoc />
-    public partial class M10 : Migration
+    public partial class M11 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -66,6 +66,25 @@ namespace GMLink.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Groups",
+                columns: table => new
+                {
+                    GroupID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    GroupName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Member1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Member2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Member3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Member4 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Member5 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Member6 = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Groups", x => x.GroupID);
                 });
 
             migrationBuilder.CreateTable(
@@ -311,6 +330,9 @@ namespace GMLink.Migrations
 
             migrationBuilder.DropTable(
                 name: "CartLine");
+
+            migrationBuilder.DropTable(
+                name: "Groups");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

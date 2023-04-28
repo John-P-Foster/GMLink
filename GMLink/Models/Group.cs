@@ -10,6 +10,7 @@ namespace GMLink.Models
     public class Group
     {
         public int GroupID { get; set; }
+        public string GroupName { get; set; }
         public string? Member1 { get; set; } = null;
         public string? Member2 { get; set; } = null;
         public string? Member3 { get; set; } = null;

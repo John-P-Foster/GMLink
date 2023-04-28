@@ -1,0 +1,51 @@
+﻿@using GMLink.Controllers
+@model IEnumerable<Group>
+
+<style>
+
+    .card {
+        padding: 10px;
+        text-align: center;
+        margin-bottom: 10px auto;
+        max-width: 500px;
+        align-content: center;
+    }
+</style>
+<div class="container text-center">
+    <h1>Reservations Currently Available</h1>
+</div>
+@foreach (var p in Model)
+{
+    Cart cart = new Cart();
+    <div class="card rounded bg-light" style="width: 50rem; margin: 10px auto;">
+        <div class="card-block m-2 ">
+            <h3>
+                <strong>  GameMaster: @p.GroupName</strong>
+
+            </h3>
+            <p>
+                <span class="card m-2 rounded text-black">
+                    @p.Member1
+                </span>
+            </p>
+
+            <p>
+                <span class="card m-2 rounded text-black">
+                    @p.Member2
+                </span>
+            </p>
+
+            <p>
+                <span class="card m-2 rounded text-black">
+                    @p.Member3
+                </span>
+            </p>
+
+            <p>
+                <span class="card m-2 rounded text-black">
+                    @p.Member4
+                </span>
+            </p>
+        </div>
+    </div>
+} 

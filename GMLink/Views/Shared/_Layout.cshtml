@@ -34,9 +34,6 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FAQs">FAQs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Policies">Terms and Condition</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="News">News</a>
                         </li>
                         <li class="nav-item">
@@ -45,7 +42,7 @@
                         @if(AccountController.CurrentUser != null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Group" asp-action="ListGroups"></a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Group" asp-action="ListGroups">Groups</a>
                             </li>
                         }
                         @if (AccountController.CurrentUser == null)

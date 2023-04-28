@@ -24,6 +24,7 @@ namespace GMLink.Models
                 Group dbEntry = context.Groups.FirstOrDefault(p => p.GroupID == group.GroupID);
                 if (dbEntry != null)
                 {
+                    dbEntry.GroupID = group.GroupID;
                     dbEntry.Member1 = group.Member1;
                     dbEntry.Member2 = group.Member2;
                     dbEntry.Member3 = group.Member3;    
