@@ -30,10 +30,6 @@ namespace GMLink.Controllers
         {
             return View();
         }
-        public IActionResult Policies ()
-        {
-            return View();
-        }
         public IActionResult Privacy()
         {
             return View();
