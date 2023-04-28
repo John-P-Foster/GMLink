@@ -12,6 +12,7 @@ namespace GMLink.Controllers
     public class ReservationController : Controller
     {
         private IReservationRepository repository;
+
         public ReservationController(IReservationRepository repo)
         {
             repository = repo;
@@ -19,7 +20,10 @@ namespace GMLink.Controllers
         public ViewResult ListReservation() => View(repository.Reservations
             .OrderBy(p => p.ReservationID));
 
-        [Authorize]
+        public ViewResult FilterReservation(string SearchTerm) => View(repository.Reservations
+            .OrderBy(p => p.ReservationID));
+
+        [Authorize] 
         public ViewResult EditReservations(int reservationId) =>
         View(repository.Reservations
         .FirstOrDefault(p => p.ReservationID == reservationId));

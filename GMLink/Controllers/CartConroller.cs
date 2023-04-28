@@ -33,7 +33,7 @@ namespace GMLink.Controllers
         {
             
             Reservation reservation = repository.Reservations.FirstOrDefault(p => p.ReservationID == reservationID);
-            if (reservation != null && reservation.Description != "Booked")
+            if (reservation != null)
             {
                 cart.AddItem(reservation, 1);
 

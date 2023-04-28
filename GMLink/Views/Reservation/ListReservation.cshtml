@@ -1,5 +1,9 @@
-﻿@model IEnumerable<Reservation>
+﻿@using GMLink.Controllers
+@model IEnumerable<Reservation>
+
+
 <h1>Reservations Currently Available</h1>
+
 @foreach (var p in Model)
 {
     Cart cart = new Cart();
