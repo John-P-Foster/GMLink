@@ -1,4 +1,6 @@
 ﻿@using GMLink.Controllers
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<AppUser> userManager
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,19 +45,19 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Reservation" asp-action="listReservation">Reservations</a>
                         </li>
-                        @if(AccountController.CurrentUser != null)
+                        @if(User.Identity?.Name != null)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Group" asp-action="ListGroups">Groups</a>
                             </li>
                         }
-                        @if (AccountController.CurrentUser == null)
+                        @if (User.Identity?.Name == null)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
                             </li>
                         }
-                        @if (AccountController.CurrentUser != null)
+                        @if (User.Identity?.Name != null)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="AccountDetails" asp-action="Index">View Account</a>

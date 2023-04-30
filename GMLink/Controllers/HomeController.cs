@@ -1,4 +1,5 @@
 ﻿using GMLink.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 namespace GMLink.Controllers
@@ -6,10 +7,13 @@ namespace GMLink.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private UserManager<AppUser> userManager;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, UserManager<AppUser> userMgr)
         {
             _logger = logger;
+            userManager = userMgr;
         }
         //carl
         public IActionResult Index()

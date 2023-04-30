@@ -2,6 +2,7 @@
 using GMLink.Models;
 using GMLink.Controllers;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace GMLink.Controllers
 {
@@ -11,12 +12,14 @@ namespace GMLink.Controllers
     {
         private IPurchaseRepository repository;
         private IReservationRepository repositoryR;
+        private UserManager<AppUser> userManager;
         private Cart cart;
-        public PurchaseController(IPurchaseRepository repoService, IReservationRepository repo, Cart cartService)
+        public PurchaseController(IPurchaseRepository repoService, IReservationRepository repo, Cart cartService, UserManager<AppUser> userMgr)
         {
             repositoryR = repo;
             repository = repoService;
             cart = cartService;
+            userManager = userMgr;
         }
         [Authorize]
         public ViewResult Checkout() => View(new Purchase());
@@ -31,7 +34,7 @@ namespace GMLink.Controllers
             if (ModelState.IsValid)
             {
                 decimal price = 0;
-                purchase.UserName = AccountController.CurrentUser.UserName;
+                purchase.UserName = User.Identity?.Name;
                 purchase.Lines = cart.Lines.ToArray();
                 repository.SaveOrder(purchase);
                 TempData["message"] = $"reservation number {purchase.PurchaseID} has been saved";
@@ -39,7 +42,7 @@ namespace GMLink.Controllers
                 foreach (var line in purchase.Lines)
                 {
                     Reservation reservation = line.Reservation;
-                    reservation.Description = AccountController.CurrentUser.UserName;
+                    reservation.Description = User.Identity?.Name;
                     price += reservation.Price;
                     repositoryR.SaveReservation(reservation);
                 }

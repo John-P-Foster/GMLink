@@ -6,16 +6,20 @@ using GMLink.Models;
 using Microsoft.AspNetCore.Mvc;
 using GMLink.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace GMLink.Controllers
 {
     public class ReservationController : Controller
     {
         private IReservationRepository repository;
+        private UserManager<AppUser> userManager;
 
-        public ReservationController(IReservationRepository repo)
+        public ReservationController(IReservationRepository repo, UserManager<AppUser> userMgr)
         {
             repository = repo;
+            userManager = userMgr;
+            
         }
         public ViewResult ListReservation() => View(repository.Reservations
             .OrderBy(p => p.ReservationID));
@@ -31,7 +35,7 @@ namespace GMLink.Controllers
         [Authorize]
         public ViewResult myReservations() => View(repository.Reservations);
 
-        [Authorize]
+        
         [HttpPost]
         public IActionResult EditReservations(Reservation reservation)
         {

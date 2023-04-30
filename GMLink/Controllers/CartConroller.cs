@@ -49,7 +49,7 @@ namespace GMLink.Controllers
         if (reservation != null)
             {
                 cart.RemoveLine(reservation);
-                reservation.Description = "Available";
+                reservation.Description = "null";
                 repository.SaveReservation(reservation);
             }
             return RedirectToAction("Index", new { returnUrl });

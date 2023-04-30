@@ -11,7 +11,7 @@ namespace GMLink.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        public static AppUser? CurrentUser { get; set; }
+        public static AppUser? CurrentUser1 { get; set; }
         private UserManager<AppUser> userManager;
         private SignInManager<AppUser> signInManager;
 
@@ -40,7 +40,7 @@ namespace GMLink.Controllers
                     if ((await signInManager.PasswordSignInAsync(user,
                     loginModel.Password, false, false)).Succeeded)
                     {
-                        CurrentUser = user;
+                        CurrentUser1 = user;
                         return Redirect("/");
                     }
                 }
@@ -50,7 +50,7 @@ namespace GMLink.Controllers
         }
         public async Task<RedirectResult> Logout(string returnUrl = "/Home/Index")
         {
-            CurrentUser = null;
+            CurrentUser1 = null;
             await signInManager.SignOutAsync();
             return Redirect(returnUrl);
         }
@@ -80,7 +80,7 @@ namespace GMLink.Controllers
                 IdentityResult result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    CurrentUser = user;
+                    CurrentUser1 = user;
                     //await signInManager.SignInAsync(user, isPersistent: false);
                     return Redirect("/AccountDetails/Create");
                 }

@@ -1,5 +1,7 @@
 ﻿@using GMLink.Controllers
+@using Microsoft.AspNetCore.Identity
 @model Reservation
+@inject UserManager<AppUser> userManager
 @{
     ViewBag.Title = "Edit Reservation";
     Layout = "_Layout";
@@ -8,14 +10,14 @@
 <form asp-action="EditReservations" method="post">
     <input type="hidden" asp-for="ReservationID" />
 
-    @if (AccountController.CurrentUser.UserName != "Admin123")
+    @if (User.Identity?.Name != "Admin123")
     {
-        <input type="hidden" asp-for="GameMaster" value="@AccountController.CurrentUser.UserName"  />
+        <input type="hidden" asp-for="GameMaster" value = "@User.Identity?.Name" />
     }
-    @if(AccountController.CurrentUser.UserName == "Admin123")
+    @if (User.Identity?.Name == "Admin123")
     {
         <div class="form-group">
-            <label asp-for="GameMaster">Set GameMaster</label>
+            <label asp-for="GameMaster">Set GameMaster @User.Identity?.Name!</label>
             <textarea asp-for="GameMaster" class="form-control"></textarea>
         </div>
         <div class="form-group">

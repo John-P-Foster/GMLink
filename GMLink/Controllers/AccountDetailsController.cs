@@ -2,15 +2,18 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Identity;
 
 namespace GMLink.Controllers
 {
     public class AccountDetailsController : Controller
     {
         private IAppUserDetailRepository repository;
-        public AccountDetailsController(IAppUserDetailRepository repo)
+        private UserManager<AppUser> userManager;
+        public AccountDetailsController(IAppUserDetailRepository repo, UserManager<AppUser> userMgr)
         {
             repository = repo;
+            userManager = userMgr;
         }
         public ViewResult Index()
         {
@@ -20,9 +23,9 @@ namespace GMLink.Controllers
             View(repository.AppUserDetails
             .FirstOrDefault(p => p.AppUserDetailID == appUserDetailId));
         [HttpPost]
-        public IActionResult Edit(AppUserDetail appUserDetail)
+        public IActionResult Edit(String userName, AppUserDetail appUserDetail)
         {
-            appUserDetail.Username = AccountController.CurrentUser.UserName;
+            appUserDetail.Username = userName;
             if (ModelState.IsValid)
             {
                 repository.SaveAppUserDetail(appUserDetail);

@@ -1,5 +1,7 @@
 ﻿@using GMLink.Controllers
+@using Microsoft.AspNetCore.Identity
 @model IEnumerable<Purchase>
+@inject UserManager<AppUser> userManager
 
 @if (Model.Count() > 0)
 { 
@@ -16,7 +18,7 @@
          </tr> 
              @foreach (Purchase p in Model)
              {
-                 if (p.UserName.Equals(AccountController.CurrentUser.UserName) || AccountController.CurrentUser.UserName == "Admin123")
+                 if (p.UserName == User.Identity?.Name || User.Identity?.Name == "Admin123")
                  {
                      <tr>
                      <td>@p.PurchaseID</td>
@@ -27,7 +29,7 @@
 
                 @foreach (CartLine line in p.Lines)
                 {
-                if (p.UserName.Equals(AccountController.CurrentUser.UserName) || AccountController.CurrentUser.UserName == "Admin123")
+                if (p.UserName == User.Identity?.Name || User.Identity?.Name == "Admin123")
                 {
                      <tr>
                      <td colspan="3"></td>

@@ -1,12 +1,14 @@
 ﻿@using GMLink.Controllers
+@using Microsoft.AspNetCore.Identity
 @model IEnumerable<AppUserDetail>
+@inject UserManager<AppUser> userManager
 @{
     Layout = "_Layout";
 }
 
 @foreach (var p in Model)
 {
-    if (p.Username.Equals(AccountController.CurrentUser.UserName))
+    if (p.Username == User.Identity?.Name)
     {
         <div class="card m-3 rounded">
             <div class="card-block m-2">
