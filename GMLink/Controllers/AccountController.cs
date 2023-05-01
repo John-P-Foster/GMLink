@@ -81,7 +81,7 @@ namespace GMLink.Controllers
                 if (result.Succeeded)
                 {
                     CurrentUser = user;
-                    //await signInManager.SignInAsync(user, isPersistent: false);
+                    await signInManager.SignInAsync(user, isPersistent: false);
                     return Redirect("/AccountDetails/Create");
                 }
                 else
