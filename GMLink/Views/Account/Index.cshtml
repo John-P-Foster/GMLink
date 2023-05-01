@@ -1,38 +1,26 @@
-﻿@model IEnumerable<AppUser>
+﻿@using GMLink.Controllers
+@using Microsoft.AspNetCore.Identity
+@model IEnumerable<AppUserDetail>
+@inject UserManager<AppUser> userManager
 @{
-    ViewBag.Title = "User Accounts";
-    Layout = "_AdminLayout";
+    Layout = "_Layout";
 }
-<div class="text-danger" asp-validation-summary="ModelOnly"></div>
-<table class="table table-condensed table-bordered">
-    <tr>
-        <!--<th>ID</th>-->
-        <th>UserName</th>
-        <!--<th>Password</th>-->
-    </tr>
-    @if (Model.Count() == 0)
+
+@foreach (var p in Model)
+{
+    if (p.Username == User.Identity?.Name)
     {
-        <tr>
-            <td colspan="3" class="text-center">
-                No User Accounts
-            </td>
-        </tr>
+        <div class="card m-3 rounded">
+            <div class="card-block m-2">
+                <a asp-action="Edit" class="btn btn-sm btn-warning" asp-route-AppUserDetailID="@p.AppUserDetailID">Edit</a>
+                <a asp-controller="Reservation" asp-action="myReservations" class="btn btn-sm btn-info">View and Edit Reservations</a>
+                <a asp-controller="GMBookings" asp-action="ViewBookings" class="btn btn-sm btn-warning"> View Past Orders</a>
+                <a asp-controller="Account" asp-action="Logout" class="btn btn-sm btn-dark">Log out</a>
+            </div>
+            <p>Name: @p.FirstName @p.LastName</p><br>
+            <p>Email: @p.Email</p><br>
+            <p>Phone number: @p.PhoneNumber</p><br>
+            <p>Address: @p.Address</p><br>           
+        </div>
     }
-    else
-    {
-        foreach (AppUser user in Model)
-        {
-            <tr>
-                <!--<td>@user.Id</td>-->
-                <td>@user.UserName</td>
-                <!--<td>@user.PasswordHash</td>-->
-                <td>
-                    <a class="btn btn-success" asp-controller="Account" asp-action="Edit" asproute-id="@user.Id">Edit</a>
-                    <a class="btn btn-danger" asp-controller="Account" asp-action="Delete" asproute-id="@user.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    }
-</table>
-<a class="btn btn-primary" asp-action="Create">Create</a>
-<a class="btn btn-primary" asp-controller="Account" asp-action="Index">Home</a>
+} 

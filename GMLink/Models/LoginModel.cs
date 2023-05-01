@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-namespace GMLink.Models.ViewModels
+
+namespace GMLink.Models
 {
     public class LoginModel
     {
@@ -8,5 +9,6 @@ namespace GMLink.Models.ViewModels
         [Required]
         [UIHint("password")]
         public string Password { get; set; }
+        public string ReturnUrl { get; set; } = "/";
     }
 }

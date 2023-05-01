@@ -1,10 +1,11 @@
-﻿@model GMLink.Models.ViewModels.LoginModel
+﻿@model LoginModel
 @{
     ViewBag.Title = "Log In";
     Layout = "_AdminLayout";
 }
-<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+<div class="text-danger" asp-validation-summary="All"></div>
 <form asp-action="Login" asp-controller="Account" method="post">
+    <input type="hidden" asp-for="ReturnUrl" />
     <div class="form-group">
         <label asp-for="UserName"></label>
         <div><span asp-validation-for="UserName" class="text-danger"></span></div>
@@ -16,7 +17,4 @@
         <input asp-for="Password" class="form-control" />
     </div>
     <button class="btn btn-primary" type="submit">Log In</button>
-    <div>
-        <p>Don't have an account? Create one <a asp-controller="Account" asp-action="Create">here</a></p>
-    </div>
 </form>
